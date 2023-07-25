@@ -1,6 +1,8 @@
 package com.sda.rentalloapp.controller;
 
 import com.sda.rentalloapp.domain.Car;
+import com.sda.rentalloapp.dto.CarDto;
+import com.sda.rentalloapp.mapper.CarMapper;
 import com.sda.rentalloapp.service.CarService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +16,21 @@ import java.util.List;
 @RequestMapping("/api")
 public class CarRestController {
 
+    private final CarMapper carMapper;
     private final CarService carService;
 
-    public CarRestController(CarService carService) {
+    public CarRestController(CarMapper carMapper, CarService carService) {
+        this.carMapper = carMapper;
         this.carService = carService;
     }
     @GetMapping("/cars")
-     public List<Car> allCars(){
+     public List<CarDto> allCars(){
         log.info("all cars request");
 
-        return carService.getAllCars();
+        return carService.getAllCars()
+                .stream()
+                .map(car -> carMapper.fromEntityToDto(car))
+                .toList();
+
     }
 }
