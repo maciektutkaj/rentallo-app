@@ -24,7 +24,9 @@ public record CarDto(
 
         boolean availability,
 
-        int rangeInKm
+        int rangeInKm,
+
+        PicturesDto pictures
         )
 {}
 
