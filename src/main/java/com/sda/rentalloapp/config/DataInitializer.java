@@ -43,5 +43,7 @@ public class DataInitializer implements CommandLineRunner {
                 .pictures(new Pictures("https://www.tuningblog.eu/wp-content/uploads/2017/01/Audi-A6-C7-Limousine-af-Vossen-Wheels-VFS-2-Felgen-Tuning-3.jpg", List.of()))
                 .build();
 
+        carRepository.save(audi);
     }
+
 }
