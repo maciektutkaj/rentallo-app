@@ -6,6 +6,7 @@ import com.sda.rentalloapp.mapper.CarMapper;
 import com.sda.rentalloapp.service.CarService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +32,12 @@ public class CarRestController {
                 .stream()
                 .map(car -> carMapper.fromEntityToDto(car))
                 .toList();
+
+    }
+    @GetMapping("/cars/{id}")
+    public CarDto getCarById(@PathVariable("id") Long carId){
+     log.info("trying to find car with id: [{}]", carId);
+     return carMapper.fromEntityToDto(carService.findCarById(carId));
 
     }
 }
