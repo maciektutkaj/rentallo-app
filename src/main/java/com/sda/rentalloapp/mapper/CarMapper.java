@@ -1,6 +1,7 @@
 package com.sda.rentalloapp.mapper;
 
 import com.sda.rentalloapp.domain.Car;
+import com.sda.rentalloapp.domain.Pictures;
 import com.sda.rentalloapp.dto.CarDto;
 import com.sda.rentalloapp.dto.PicturesDto;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,21 @@ public class CarMapper implements Mapper<Car, CarDto>{
 
     @Override
     public Car fromDtoToEntity(CarDto dto) {
-        return null;
+        return Car.builder()
+                .id(dto.id())
+                .model(dto.model())
+                .brand(dto.brand())
+                .fuelType(dto.fuelType())
+                .engineType(dto.engineType())
+                .bodyType(dto.bodyType())
+                .numberOfSeats(dto.numberOfSeats())
+                .trunkCapacityInLitres(dto.trunkCapacityInLitres())
+                .consumptionPer100km(dto.consumptionPer100km())
+                .vin(dto.vin())
+                .pricePerDayInPolishGrosz(dto.pricePerDayInPolishGrosz())
+                .availability(dto.availability())
+                .rangeInKm(dto.rangeInKm())
+                .pictures(new Pictures(dto.pictures().mainPictureUrl(),dto.pictures().picturesUrls()))
+                .build();
     }
 }
