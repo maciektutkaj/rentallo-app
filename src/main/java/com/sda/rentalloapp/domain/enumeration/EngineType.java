@@ -6,4 +6,5 @@ public enum EngineType {
     V10,
     V8,
     V6,
+    R4
 }
