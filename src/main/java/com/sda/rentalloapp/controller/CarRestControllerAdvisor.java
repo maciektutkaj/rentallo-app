@@ -3,6 +3,7 @@ package com.sda.rentalloapp.controller;
 import com.sda.rentalloapp.dto.ResponseDto;
 import com.sda.rentalloapp.exception.WrongCarIdException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,8 +39,10 @@ public class CarRestControllerAdvisor {
 
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseDto handlerBadRequest(MethodArgumentNotValidException exc){
+    @ExceptionHandler({MethodArgumentNotValidException.class, DataIntegrityViolationException.class})
+
+    public ResponseDto handlerBadRequest(Exception exc){
+        log.warn("exc: ", exc);
         String path = getCurrentRequestPath();
 
         return ResponseDto.builder()
