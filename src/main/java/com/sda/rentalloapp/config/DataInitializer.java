@@ -116,7 +116,7 @@ public class DataInitializer implements CommandLineRunner {
                 .numberOfSeats(5)
                 .trunkCapacityInLitres(425)
                 .consumptionPer100km("21 kWh")
-                .vin("7818763544")
+                .vin("78358763544")
                 .pricePerDayInPolishGrosz(30000)
                 .availability(true)
                 .rangeInKm(490)
