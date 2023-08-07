@@ -1,19 +1,35 @@
 package com.sda.rentalloapp.domain;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-@Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "RENTS")
 public class CarBooking {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    @ManyToOne
     Car bookedCar;
+    @ManyToOne
     Client client;
+
     LocalDate startDate;
+
     LocalDate endDate;
+
     int totalPriceInPolishGrosz;
+    @ManyToOne
     Address startLocation;
+    @ManyToOne
     Address endLocation;
 
 }
