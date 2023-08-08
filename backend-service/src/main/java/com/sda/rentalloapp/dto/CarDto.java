@@ -1,5 +1,6 @@
 package com.sda.rentalloapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sda.rentalloapp.domain.enumeration.BodyType;
 import com.sda.rentalloapp.domain.enumeration.EngineType;
 import com.sda.rentalloapp.domain.enumeration.FuelType;
