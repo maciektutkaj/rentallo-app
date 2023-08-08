@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { CarsComponent } from './components/cars/cars.component';
+import { AppComponent } from './app/app.component';
+import { CarsComponent } from './cars/cars.component';
 
 @NgModule({
   declarations: [
