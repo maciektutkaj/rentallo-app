@@ -51,7 +51,7 @@ public class Car {
     @Column(unique = true)
     String vin;
 
-    int pricePerDayInPolishGrosz;
+    long pricePerDayInPolishGrosz;
 
     boolean availability;
 

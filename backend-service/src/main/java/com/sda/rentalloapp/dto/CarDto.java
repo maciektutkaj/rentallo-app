@@ -28,7 +28,7 @@ public record CarDto(
 
         String vin,
 
-        int pricePerDayInPolishGrosz,
+        long pricePerDayInPolishGrosz,
 
         boolean availability,
 
