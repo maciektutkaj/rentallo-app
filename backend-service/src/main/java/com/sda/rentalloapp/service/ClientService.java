@@ -6,6 +6,8 @@ import com.sda.rentalloapp.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class ClientService {
@@ -24,4 +26,15 @@ public class ClientService {
                 })
                 .orElseThrow(() -> new WrongClientException("No car with id [%d] found ".formatted(clientId)));
     }
+
+    public List<Client> getAllClients(){
+        log.info("getting all cars");
+        var clients = clientRepository.findAll();
+        log.info("numbers of clients: [{}]", clients.size());
+        log.debug("all clients {}", clients);
+        return clients;
+    }
+
 }
+
+
