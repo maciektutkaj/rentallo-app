@@ -8,7 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {TopBarComponent} from "./top-bar/top-bar.component";
-import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
+import {NavigationBarComponent} from "./navigation-bar/navigation-bar.component";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {ClientsComponent} from './clients/clients.component';
 import {AboutComponent} from './about/about.component';
@@ -17,6 +17,7 @@ import {Route, RouterModule, Routes} from "@angular/router";
 import {aboutUrl, carsUrl, clientsUrl, homePageUrl, myRentsHistoryUrl, notFoundPageUrl} from "../models/urls";
 import {HomePageComponent} from './home-page/home-page.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {MatIconModule} from "@angular/material/icon";
 
 const routingTable: Routes = [
     {path: homePageUrl, component: HomePageComponent},
@@ -45,6 +46,7 @@ const routingTable: Routes = [
     MatCardModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatIconModule,
     RouterModule.forRoot(routingTable)
   ],
   providers: [],
