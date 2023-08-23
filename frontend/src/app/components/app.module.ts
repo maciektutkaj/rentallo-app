@@ -21,6 +21,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 const routingTable: Routes = [
     {path: homePageUrl, component: HomePageComponent},
@@ -53,7 +54,8 @@ const routingTable: Routes = [
     RouterModule.forRoot(routingTable),
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
