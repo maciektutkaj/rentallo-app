@@ -1,16 +1,21 @@
 package com.sda.rentalloapp.config;
 
+import com.sda.rentalloapp.domain.Address;
 import com.sda.rentalloapp.domain.Car;
+import com.sda.rentalloapp.domain.Client;
 import com.sda.rentalloapp.domain.Pictures;
 import com.sda.rentalloapp.domain.enumeration.BodyType;
 import com.sda.rentalloapp.domain.enumeration.EngineType;
 import com.sda.rentalloapp.domain.enumeration.FuelType;
+import com.sda.rentalloapp.repository.AddressRepository;
 import com.sda.rentalloapp.repository.CarRepository;
+import com.sda.rentalloapp.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -19,13 +24,138 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
 
     private final CarRepository carRepository;
+    private final ClientRepository clientRepository;
+    private final AddressRepository addressRepository;
 
-    public DataInitializer(CarRepository carRepository) {
+    public DataInitializer(CarRepository carRepository, ClientRepository clientRepository, AddressRepository addressRepository) {
         this.carRepository = carRepository;
+        this.clientRepository = clientRepository;
+        this.addressRepository = addressRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        createCars();
+        createClientsWithAddresses();
+
+
+    }
+
+    private void createClientsWithAddresses() {
+        log.info("let's create some locations");
+
+        Address miodowa = Address.builder()
+                .street("Miodowa")
+                .zipCode("24-100")
+                .city("Pulawy")
+                .houseNumber("1")
+                .voivodeship("Lubelskie")
+                .country("Poland")
+                .build();
+        addressRepository.save(miodowa);
+
+        Address rozana = Address.builder()
+                .street("Rozana")
+                .zipCode("24-100")
+                .city("Pulawy")
+                .houseNumber("25")
+                .voivodeship("Lubelskie")
+                .country("Poland")
+                .build();
+        addressRepository.save(rozana);
+
+        Address centralna = Address.builder()
+                .street("Centralna")
+                .zipCode("24-100")
+                .city("Pulawy")
+                .houseNumber("125")
+                .voivodeship("Lubelskie")
+                .country("Poland")
+                .build();
+        addressRepository.save(centralna);
+
+        Address slowackiego = Address.builder()
+                .street("Slowackeigo")
+                .zipCode("24-100")
+                .city("Pulawy")
+                .houseNumber("75")
+                .voivodeship("Lubelskie")
+                .country("Poland")
+                .build();
+        addressRepository.save(slowackiego);
+
+        Address cyprysowa = Address.builder()
+                .street("Cyprysowa")
+                .zipCode("24-100")
+                .city("Pulawy")
+                .houseNumber("2")
+                .voivodeship("Lubelskie")
+                .country("Poland")
+                .build();
+        addressRepository.save(cyprysowa);
+
+        log.info("let's create some clients");
+
+        Client janK = Client.builder()
+                .name("Jan")
+                .surname("K.")
+                .pesel("89120405935")
+                .email("jan.k@ex.com")
+                .dateOfBirth(LocalDate.of(1989,12,4))
+                .phone("555-123-789")
+                .address(miodowa)
+                .build();
+        clientRepository.save(janK);
+
+        Client tomaszB = Client.builder()
+                .name("Tomasz")
+                .surname("B.")
+                .pesel("99011103625")
+                .email("tomasz.b@ex.com")
+                .dateOfBirth(LocalDate.of(1999,1,11))
+                .phone("565-623-689")
+                .address(centralna)
+                .build();
+        clientRepository.save(tomaszB);
+
+        Client annaN = Client.builder()
+                .name("Anna")
+                .surname("N.")
+                .pesel("93061412721")
+                .email("anna.n@ex.com")
+                .dateOfBirth(LocalDate.of(1993,6,14))
+                .phone("535-173-759")
+                .address(cyprysowa)
+                .build();
+        clientRepository.save(annaN);
+
+        Client zofiaW = Client.builder()
+                .name("Zofia")
+                .surname("W.")
+                .pesel("61052116941")
+                .email("zofia.w@ex.com")
+                .dateOfBirth(LocalDate.of(1961,5,21))
+                .phone("551-121-719")
+                .address(slowackiego)
+                .build();
+        clientRepository.save(zofiaW);
+
+        Client jacekM = Client.builder()
+                .name("Jacek")
+                .surname("M.")
+                .pesel("73081905952")
+                .email("jacek.m@ex.com")
+                .dateOfBirth(LocalDate.of(1973,8,19))
+                .phone("651-621-716")
+                .address(rozana)
+                .build();
+        clientRepository.save(jacekM);
+
+
+    }
+
+
+    private void createCars() {
         log.info("let's create some cars");
         Car audi = Car.builder()
                 .model("A6")
@@ -124,15 +254,12 @@ public class DataInitializer implements CommandLineRunner {
                 .build();
 
 
-
         carRepository.save(audi);
         carRepository.save(mercedes);
         carRepository.save(ford);
         carRepository.save(fiat);
         carRepository.save(bmw);
         carRepository.save(tesla);
-
-
     }
 
 }
