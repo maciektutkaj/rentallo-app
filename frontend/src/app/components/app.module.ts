@@ -22,6 +22,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routingTable: Routes = [
     {path: homePageUrl, component: HomePageComponent},
@@ -55,7 +56,8 @@ const routingTable: Routes = [
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

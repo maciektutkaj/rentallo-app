@@ -1,3 +1,48 @@
+<div>
+<div>
+  <h2>Created new car</h2>
+  <form>
+    <label for="model">Model:</label>
+    <input id="model" [formControl]="model" type="text">
+
+    <label for="brand">Brand:</label>
+    <input id="brand" type="text"  [formControl]="brand">
+
+    <label for="fuelType">Fuel type:</label>
+    <input id="fuelType" type="text"  [formControl]="fuelType">
+
+    <label for="engineType">Engine type:</label>
+    <input id="engineType" type="text"  [formControl]="engineType">
+
+    <label for="bodyType">Body type:</label>
+    <input id="bodyType" type="text"  [formControl]="bodyType">
+
+    <label for="numberOfSeat">Number of seats:</label>
+    <input id="numberOfSeat" type="text"  [formControl]="numberOfSeat">
+
+    <label for="trunkCapacityInLitres">Trunk capacity:</label>
+    <input id="trunkCapacityInLitres" type="text"  [formControl]="trunkCapacityInLitres">
+
+    <label for="consumptionPer100km">Consumption:</label>
+    <input id="consumptionPer100km" type="text"  [formControl]="consumptionPer100km">
+
+    <label for="pricePerDayInPolishGrosz">Price per day:</label>
+    <input id="pricePerDayInPolishGrosz" type="text"  [formControl]="pricePerDayInPolishGrosz">
+
+    <label for="availability">Availability:</label>
+    <input id="availability" type="text"  [formControl]="availability">
+
+    <label for="rangeInKm">Range:</label>
+    <input id="rangeInKm" type="text"  [formControl]="rangeInKm">
+
+    <label for="pictures">Main pictures link:</label>
+    <input id="pictures" type="text"  [formControl]="pictures">
+
+    <button mat-flat-button color="primary">Save </button>
+
+
+  </form>
+</div>
 <div *ngFor="let car of cars">
 <mat-card class="example-card">
   <mat-card-header>
@@ -21,4 +66,5 @@
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>
+</div>
 </div>
