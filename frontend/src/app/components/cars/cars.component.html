@@ -1,44 +1,49 @@
 <div>
 <div>
+  <p>Form value: {{value | json}}</p>
   <h2>Created new car</h2>
-  <form>
+  <form [formGroup]="carForm" (ngSubmit)="sendCar()" >
+
+
     <label for="model">Model:</label>
-    <input id="model" [formControl]="model" type="text">
+    <input id="model" [formControl]="model" type="text"><br/>
 
     <label for="brand">Brand:</label>
-    <input id="brand" type="text"  [formControl]="brand">
+    <input id="brand" type="text"  [formControl]="brand"><br/>
 
     <label for="fuelType">Fuel type:</label>
-    <input id="fuelType" type="text"  [formControl]="fuelType">
+    <input id="fuelType" type="text"  [formControl]="fuelType"><br/>
 
     <label for="engineType">Engine type:</label>
-    <input id="engineType" type="text"  [formControl]="engineType">
+    <input id="engineType" type="text"  [formControl]="engineType"><br/>
 
     <label for="bodyType">Body type:</label>
-    <input id="bodyType" type="text"  [formControl]="bodyType">
+    <input id="bodyType" type="text"  [formControl]="bodyType"><br/>
 
     <label for="numberOfSeat">Number of seats:</label>
-    <input id="numberOfSeat" type="text"  [formControl]="numberOfSeat">
+    <input id="numberOfSeat" type="number"  [formControl]="numberOfSeat"><br/>
 
     <label for="trunkCapacityInLitres">Trunk capacity:</label>
-    <input id="trunkCapacityInLitres" type="text"  [formControl]="trunkCapacityInLitres">
+    <input id="trunkCapacityInLitres" type="number"  [formControl]="trunkCapacityInLitres"><br/>
 
-    <label for="consumptionPer100km">Consumption:</label>
-    <input id="consumptionPer100km" type="text"  [formControl]="consumptionPer100km">
+    <label for="combustionPer100km">Combustion:</label>
+    <input id="combustionPer100km" type="number"  [formControl]="combustionPer100km"><br/>
 
     <label for="pricePerDayInPolishGrosz">Price per day:</label>
-    <input id="pricePerDayInPolishGrosz" type="text"  [formControl]="pricePerDayInPolishGrosz">
+    <input id="pricePerDayInPolishGrosz" type="text"  [formControl]="pricePerDayInPolishGrosz"><br/>
 
     <label for="availability">Availability:</label>
-    <input id="availability" type="text"  [formControl]="availability">
+    <input id="availability" type="text"  [formControl]="availability"><br/>
 
     <label for="rangeInKm">Range:</label>
-    <input id="rangeInKm" type="text"  [formControl]="rangeInKm">
+    <input id="rangeInKm" type="number"  [formControl]="rangeInKm"><br/>
 
+    <!-- TODO -->
     <label for="pictures">Main pictures link:</label>
-    <input id="pictures" type="text"  [formControl]="pictures">
+    <input id="pictures" type="text"  [formControl]="pictures"><br/>
 
-    <button mat-flat-button color="primary">Save </button>
+    <button type="submit" mat-flat-button color="primary">Save</button>
+    <button type="reset" mat-flat-button >Reset</button>
 
 
   </form>
@@ -56,7 +61,7 @@
     <ol>
       <h3>
         Car in {{car.bodyType}} body for {{car.numberOfSeats}} people and {{car.trunkCapacityInLitres}} liters of luggage.
-        {{car.fuelType}} engine and combustion at the level of {{car.consumptionPer100km}} allows you to cover
+        {{car.fuelType}} engine and combustion at the level of {{car.combustionPer100km}} allows you to cover
         {{car.rangeInKm}} km.
       </h3>
     </ol>

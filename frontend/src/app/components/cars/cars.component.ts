@@ -12,6 +12,7 @@ export class CarsComponent implements OnInit {
 
   cars: Array<Car> = []
   carForm = new FormGroup({
+    id:new FormControl(null),
     model:new FormControl(''),
     brand: new FormControl(''),
     fuelType: new FormControl(''),
@@ -19,7 +20,7 @@ export class CarsComponent implements OnInit {
     bodyType: new FormControl(''),
     numberOfSeat: new FormControl(4),
     trunkCapacityInLitres: new FormControl(200),
-    consumptionPer100km: new FormControl(''),
+    combustionPer100km: new FormControl(''),
     pricePerDayInPolishGrosz: new FormControl(0),
     availability: new FormControl(true),
     rangeInKm: new FormControl(300),
@@ -28,6 +29,8 @@ export class CarsComponent implements OnInit {
       picturesUrl: new FormControl(Array<string>)
     }),
   })
+
+  value: any;
   get pictures(){
     return this.carForm.controls.pictures.controls.mainPictureUrl
   }
@@ -41,8 +44,8 @@ export class CarsComponent implements OnInit {
   get pricePerDayInPolishGrosz(){
     return this.carForm.controls.pricePerDayInPolishGrosz
 }
-  get consumptionPer100km(){
-    return this.carForm.controls.consumptionPer100km
+  get combustionPer100km(){
+    return this.carForm.controls.combustionPer100km
   }
   get trunkCapacityInLitres(){
     return this.carForm.controls.trunkCapacityInLitres
@@ -79,6 +82,12 @@ export class CarsComponent implements OnInit {
         console.log("data from server: " + JSON.stringify(carsFromServer, null, 2))
         this.cars = carsFromServer
       })
+  }
+
+  sendCar() {
+    console.log("data submitted")
+    this.value = this.carForm.value
+    //this.carService.sendCar(this.carForm.value as Car)
   }
 
 }

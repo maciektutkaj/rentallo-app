@@ -13,7 +13,7 @@ export interface Car {
   bodyType: string,
   numberOfSeats: number,
   trunkCapacityInLitres: number,
-  consumptionPer100km: string,
+  combustionPer100km: string,
   pricePerDayInPolishGrosz: number,
   availability: boolean,
   rangeInKm: number,

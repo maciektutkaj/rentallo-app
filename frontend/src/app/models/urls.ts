@@ -4,6 +4,7 @@ export const allCarsUrl = `${serverUrl}/api/cars`
 export const allClientsUrl=`${serverUrl}/api/clients`
 
 
+
 // internal links
 
 export const homePageUrl = ''
@@ -12,3 +13,4 @@ export const carsUrl = 'cars'
 export const clientsUrl = 'clients'
 export const aboutUrl = 'about'
 export const notFoundPageUrl = '**'
+export const createCarUrl = `${serverUrl}/api/cars`
