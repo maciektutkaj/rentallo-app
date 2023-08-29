@@ -1,75 +1,58 @@
 <div>
-<div>
-  <p>Form value: {{value | json}}</p>
-  <h2>Created new car</h2>
-  <form [formGroup]="carForm" (ngSubmit)="sendCar()" >
-
-
-    <label for="model">Model:</label>
-    <input id="model" [formControl]="model" type="text"><br/>
-
-    <label for="brand">Brand:</label>
-    <input id="brand" type="text"  [formControl]="brand"><br/>
-
-    <label for="fuelType">Fuel type:</label>
-    <input id="fuelType" type="text"  [formControl]="fuelType"><br/>
-
-    <label for="engineType">Engine type:</label>
-    <input id="engineType" type="text"  [formControl]="engineType"><br/>
-
-    <label for="bodyType">Body type:</label>
-    <input id="bodyType" type="text"  [formControl]="bodyType"><br/>
-
-    <label for="numberOfSeat">Number of seats:</label>
-    <input id="numberOfSeat" type="number"  [formControl]="numberOfSeat"><br/>
-
-    <label for="trunkCapacityInLitres">Trunk capacity:</label>
-    <input id="trunkCapacityInLitres" type="number"  [formControl]="trunkCapacityInLitres"><br/>
-
-    <label for="combustionPer100km">Combustion:</label>
-    <input id="combustionPer100km" type="number"  [formControl]="combustionPer100km"><br/>
-
-    <label for="pricePerDayInPolishGrosz">Price per day:</label>
-    <input id="pricePerDayInPolishGrosz" type="text"  [formControl]="pricePerDayInPolishGrosz"><br/>
-
-    <label for="availability">Availability:</label>
-    <input id="availability" type="text"  [formControl]="availability"><br/>
-
-    <label for="rangeInKm">Range:</label>
-    <input id="rangeInKm" type="number"  [formControl]="rangeInKm"><br/>
-
-    <!-- TODO -->
-    <label for="pictures">Main pictures link:</label>
-    <input id="pictures" type="text"  [formControl]="pictures"><br/>
-
-    <button type="submit" mat-flat-button color="primary">Save</button>
-    <button type="reset" mat-flat-button >Reset</button>
-
-
-  </form>
-</div>
-<div *ngFor="let car of cars">
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{car.brand}}</mat-card-title>
-    <mat-card-subtitle>{{car.model}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="{{car.pictures.mainPictureUrl}}" alt="Logo of Rentallo app">
-  <mat-card-content>
-    <h2>Car description:</h2>
-    <ol>
-      <h3>
-        Car in {{car.bodyType}} body for {{car.numberOfSeats}} people and {{car.trunkCapacityInLitres}} liters of luggage.
-        {{car.fuelType}} engine and combustion at the level of {{car.combustionPer100km}} allows you to cover
-        {{car.rangeInKm}} km.
-      </h3>
-    </ol>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
-</div>
+  <div>
+    <p>Form value: {{ value | json }}</p>
+    <h2>Create new car</h2>
+    <form [formGroup]="carForm" (ngSubmit)="sendCar()">
+      <label for="model">Model:</label>
+      <input id="model" [formControl]="model" type="text"><br/>
+      <label for="brand">Brand</label>
+      <input id="brand" type="text" [formControl]="brand"><br/>
+      <label for="fuelType">Fuel type</label>
+      <input id="fuelType" type="text" [formControl]="fuelType"><br/>
+      <label for="engineType">Engine type</label>
+      <input id="engineType" type="text" [formControl]="engineType"><br/>
+      <label for="bodyType">Body type</label>
+      <input id="bodyType" type="text" [formControl]="bodyType"><br/>
+      <label for="numberOfSeats">Number of seats</label>
+      <input id="numberOfSeats" type="number" [formControl]="numberOfSeats"><br/>
+      <label for="trunkCapacityInLitres">Trunk capacity in litres</label>
+      <input id="trunkCapacityInLitres" type="number" [formControl]="trunkCapacityInLitres"><br/>
+      <label for="combustionPer100Km">Combustion per 100 km</label>
+      <input id="combustionPer100Km" type="number" [formControl]="combustionPer100Km"><br/>
+      <label for="bodySerialNumber">Body serial number</label>
+      <input id="bodySerialNumber" type="text" [formControl]="bodySerialNumber"><br/>
+      <label for="pricePerDayInPolishGrosz">Price per day in polish grosz</label>
+      <input id="pricePerDayInPolishGrosz" type="number" [formControl]="pricePerDayInPolishGrosz"><br/>
+      <label for="available">Is available</label>
+      <input id="available" type="text" [formControl]="available"><br/>
+      <label for="rangeInKm">Range in [km]</label>
+      <input id="rangeInKm" type="number" [formControl]="rangeInKm"><br/>
+      <!--      TODO: change button design-->
+      <label for="rangeInKm">Pictures</label>
+      <button #submitButton type="submit"  mat-raised-button>Create</button>
+      <button type="reset" mat-raised-button>Reset</button>
+    </form>
+  </div>
+  <div *ngFor="let car of cars">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{car.brand}}</mat-card-title>
+        <mat-card-subtitle>{{car.model}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{car.pictures.mainPictureUrl}}" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        Car description:
+        <ol>
+          <li>Engine type: {{car.engineType}}</li>
+          <li>Body type: {{car.bodyType}}</li>
+          <li>Price per day: {{car.pricePerDayInPolishGrosz}}</li>
+        </ol>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
